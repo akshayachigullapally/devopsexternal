@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app
+  name: myapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flask-app
+      app: myapp
   template:
     metadata:
       labels:
-        app: flask-app
+        app: myapp
     spec:
       containers:
-      - name: flask-app
-        image: flask-app:1.0
+      - name: myapp
+        image: myapp:1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5001
         envFrom:
         - configMapRef:
             name: app-config
-
